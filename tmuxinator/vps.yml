@@ -1,0 +1,16 @@
+name: vps
+root: ~/
+windows: 
+    - Local:
+        layout:
+        panes:
+            - clear 
+    - Remote : 
+        panes:
+            - clear
+    - Vpn :
+        panes :
+            - clear
+
+    
+

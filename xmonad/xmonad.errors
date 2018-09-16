@@ -1,0 +1,30 @@
+
+xmonad.hs:16:36: warning: [-Wtabs]
+    Tab character found here, and in 584 further locations.
+    Please use spaces instead.
+   |
+16 | import XMonad.Hooks.DynamicProperty                     -- manage window profile and actions
+   |                                    ^^^^^
+
+xmonad.hs:61:26: warning: [-Wdeprecations]
+    In the use of `defaultConfig'
+    (imported from XMonad, but defined in XMonad.Config):
+    Deprecated: "Use def (from Data.Default, and re-exported by XMonad and XMonad.Config) instead."
+   |
+61 |                 xmonad $ defaultConfig {
+   |                          ^^^^^^^^^^^^^
+
+xmonad.hs:72:86: warning: [-Wdeprecations]
+    In the use of `defaultConfig'
+    (imported from XMonad, but defined in XMonad.Config):
+    Deprecated: "Use def (from Data.Default, and re-exported by XMonad and XMonad.Config) instead."
+   |
+72 |                                                                           manageHook defaultConfig <+> 
+   |                                                                                      ^^^^^^^^^^^^^
+
+xmonad.hs:213:33: warning: [-Wdeprecations]
+    In the use of `smartSpacing' (imported from XMonad.Layout.Spacing):
+    Deprecated: "Use spacingRaw instead."
+    |
+213 |                                 smartSpacing 4 $
+    |                                 ^^^^^^^^^^^^
