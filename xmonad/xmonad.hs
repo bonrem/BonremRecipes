@@ -47,6 +47,7 @@ import XMonad.Layout.WindowArranger
 import XMonad.Layout.IM
 import XMonad.Layout.PerWorkspace
 import XMonad.Layout.SimpleFloat
+import qualified XMonad.Layout.IndependentScreens as LIS
 import Graphics.X11.ExtraTypes.XF86          --XF86 keys
 import Data.Monoid
 import Data.Maybe ( isJust, catMaybes, mapMaybe )
@@ -55,10 +56,9 @@ import Codec.Binary.UTF8.String (encodeString)
 import qualified XMonad.Layout.IndependentScreens as LIS
 --  | MainExecution |
 main =  do
-			
 		dzenBar1 <- spawnPipe "~/.xmonad/Bash/bBar"
 		dzenBar2 <- spawnPipe "~/.xmonad/Bash/bBar2"
-		xmonad $ defaultConfig {
+		xmonad $docks $ defaultConfig {
  				--basic
 				borderWidth			= bBorderWidth
 				,terminal			= bTerminal
@@ -94,39 +94,40 @@ bKeys conf = M.fromList $
     [
     --keys to Apps 
       
-      ((bModMask				, xK_Return		  ),spawn bTerminal )
-	, ((bModMask				, xK_p			  ),spawn "~/.xmonad/Bash/menu")		--Start dmenu from '~/.xmonad/menu.sh' (why:ease in dmenu config)
-    , ((0       		        	, xF86XK_AudioRaiseVolume ),	spawn "amixer set Master 5%+")
-    , ((0                       		, xF86XK_AudioLowerVolume ),	spawn "amixer set Master 5%-")
+      ((bModMask			, xK_Return		  		  ),spawn bTerminal )
+	, ((bModMask			, xK_p			  		  ),spawn "~/.xmonad/Bash/menu")		--Start dmenu from '~/.xmonad/menu.sh' (why:ease in dmenu config)
+    , ((0       		    , xF86XK_AudioRaiseVolume ),	spawn "amixer set Master 5%+")
+    , ((0                   , xF86XK_AudioLowerVolume ),	spawn "amixer set Master 5%-")
     , ((0 					, xF86XK_AudioMute        ),	spawn "amixer set Master toggle")
-    , ((0 					, xF86XK_Mail 		  ),  	spawn bBrowser)
-	--, ((0, xF86XK_Mail),  submap . M.fromList $ [ ((0, xF86XK_Mail),  spawn bBrowser)])
-	--, ((0, Pause      ),  submap . M.fromList $ [ ((0, Pause      ),  spawn bBrowser)])
-    --Navigation Made easier
-
-    , ((altMask					, xK_F4		), kill)
-    , ((bModMask				, xK_space	), sendMessage NextLayout)
-    , ((bModMask				, xK_n		), refresh)
-    			--window navigation
-    , ((altMask				    	, xK_Up		), windows S.swapMaster)
+    , ((0 					, xF86XK_MonBrightnessUp  ),    spawn "lux -a 5%")
+    , ((0					, xF86XK_MonBrightnessDown ),    spawn "lux -s 5%")
+    --Nav Easier
+    , ((altMask 				, xK_F4		), kill)
+    , ((bModMask 				, xK_space	), sendMessage NextLayout)
+    , ((bModMask 				, xK_n		),  refresh)
+			--window Nav
+    , ((altMask 				, xK_Up		), windows S.swapMaster)
     , ((altMask 				, xK_Left	), windows S.swapUp)
-    , ((altMask	     			  	, xK_Right	), windows S.swapDown)
+    , ((altMask 				, xK_Left	), windows S.swapUp)
+    , ((altMask 				, xK_Left	), windows S.swapUp)
+    , ((altMask	     			, xK_Right	), windows S.swapDown)
     , ((altMask					, xK_Tab	), windows S.focusDown) 
-    , ((altMask .|. shiftMask			, xK_Tab	), windows S.focusUp)
+    , ((altMask .|. shiftMask	, xK_Tab	), windows S.focusUp)
     , ((bModMask 				, xK_Left	), sendMessage Shrink)
     , ((bModMask				, xK_Right	), sendMessage Expand)
+    , ((bModMask				, xK_b     ), sendMessage ToggleStruts)
     , ((bModMask				, xK_q		), broadcastMessage ReleaseResources >> restart "xmonad" True)
     			--workspace manupulation  bindings 
     , ((altMask					, xK_p     	), gotoMenu ) 	--go to app
-	, ((altMask				, xK_b     	), bringMenu) 	--bring	app	to	workspace
-	, ((controlMask             		, xK_equal  ), sendMessage Mag.MagnifyMore)
-	, ((controlMask             		, xK_minus  ), sendMessage Mag.MagnifyLess)
+	, ((altMask					, xK_b     	), bringMenu) 	--bring	app	to	workspace
+	, ((controlMask             , xK_equal  ), sendMessage Mag.MagnifyMore)
+	, ((controlMask             , xK_minus  ), sendMessage Mag.MagnifyLess)
 	, ((controlMask .|. shiftMask           , xK_equal  ),sendMessage Mag.Toggle)
 	                   
 				-- Quit xmonad
-	 , ((bModMask .|. altMask 		, xK_q      ), io (exitWith ExitSuccess))
+	 , ((bModMask .|. altMask 				, xK_q      ), io (exitWith ExitSuccess))
     --Lock Screen
-    , ((bModMask              			, xF86XK_HomePage       ), spawn "dm-tool switch-to-greeter") --requires  lightdm
+    , ((bModMask              			, xK_l       ), spawn "dm-tool switch-to-greeter") --requires  lightdm
     -- Push window back into tiling
     , ((bModMask              			, xK_s       ), withFocused $ windows . S.sink) 
     ]
@@ -367,8 +368,8 @@ startup=
 	(spawn "~/.xmonad/Bash/background")<+>
 	( startTimer 1 >>= XS.put . TID )
 -- Laptop  screens config
---togglevga = do
---  screencount <- LIS.countScreens
+--togglevga = do 
+-- screencount <- LIS.countScreens
 --  if screencount > 1
 --   then spawn "xrandr --output VGA1 --off"
 --   else spawn "xrandr --output VGA1 --auto --right-of LVDS1"
