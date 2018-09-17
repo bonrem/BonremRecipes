@@ -60,22 +60,22 @@ main =  do
 		dzenBar2 <- spawnPipe "~/.xmonad/Bash/bBar2"
 		xmonad $docks $ defaultConfig {
  				--basic
-				borderWidth			= bBorderWidth
-				,terminal			= bTerminal
+				borderWidth		= bBorderWidth
+				,terminal		= bTerminal
 				,normalBorderColor	= bNormalBorderColor
 				,focusedBorderColor	= bFocusedBorderColor
-				,modMask			= bModMask
+				,modMask		= bModMask
 				,startupHook		= startup 
-				,handleEventHook    = clockEventHook
-				,workspaces			= bWorkspaces
-				,manageHook			= 
-									  manageHook defaultConfig <+> 
-									  bmanageHook
+				,handleEventHook    	= clockEventHook
+				,workspaces		= bWorkspaces
+				,manageHook		= 
+								manageHook defaultConfig <+> 
+								bmanageHook
 				,logHook           	= 
-									  bLogHookLeft dzenBar1 <+>
-									  bLogHookRight dzenBar2				
-				,keys				= bKeys
-				,layoutHook         = blayoutHook 
+								bLogHookLeft dzenBar1 <+>
+								bLogHookRight dzenBar2				
+				,keys			= bKeys
+				,layoutHook         	= blayoutHook 
 									 
 						}
 
@@ -96,11 +96,11 @@ bKeys conf = M.fromList $
       
       ((bModMask			, xK_Return		  		  ),spawn bTerminal )
 	, ((bModMask			, xK_p			  		  ),spawn "~/.xmonad/Bash/menu")		--Start dmenu from '~/.xmonad/menu.sh' (why:ease in dmenu config)
-    , ((0       		    , xF86XK_AudioRaiseVolume ),	spawn "amixer set Master 5%+")
-    , ((0                   , xF86XK_AudioLowerVolume ),	spawn "amixer set Master 5%-")
-    , ((0 					, xF86XK_AudioMute        ),	spawn "amixer set Master toggle")
-    , ((0 					, xF86XK_MonBrightnessUp  ),    spawn "lux -a 5%")
-    , ((0					, xF86XK_MonBrightnessDown ),    spawn "lux -s 5%")
+    , ((0       		    	, xF86XK_AudioRaiseVolume ),	spawn "amixer set Master 5%+")
+    , ((0                   		, xF86XK_AudioLowerVolume ),	spawn "amixer set Master 5%-")
+    , ((0 				, xF86XK_AudioMute        ),	spawn "amixer set Master toggle")
+    , ((0 				, xF86XK_MonBrightnessUp  ),    spawn "lux -a 5%")
+    , ((0				, xF86XK_MonBrightnessDown ),    spawn "lux -s 5%")
     --Nav Easier
     , ((altMask 				, xK_F4		), kill)
     , ((bModMask 				, xK_space	), sendMessage NextLayout)
@@ -110,7 +110,7 @@ bKeys conf = M.fromList $
     , ((altMask 				, xK_Left	), windows S.swapUp)
     , ((altMask 				, xK_Left	), windows S.swapUp)
     , ((altMask 				, xK_Left	), windows S.swapUp)
-    , ((altMask	     			, xK_Right	), windows S.swapDown)
+    , ((altMask	     				, xK_Right	), windows S.swapDown)
     , ((altMask					, xK_Tab	), windows S.focusDown) 
     , ((altMask .|. shiftMask	, xK_Tab	), windows S.focusUp)
     , ((bModMask 				, xK_Left	), sendMessage Shrink)
@@ -119,13 +119,13 @@ bKeys conf = M.fromList $
     , ((bModMask				, xK_q		), broadcastMessage ReleaseResources >> restart "xmonad" True)
     			--workspace manupulation  bindings 
     , ((altMask					, xK_p     	), gotoMenu ) 	--go to app
-	, ((altMask					, xK_b     	), bringMenu) 	--bring	app	to	workspace
-	, ((controlMask             , xK_equal  ), sendMessage Mag.MagnifyMore)
-	, ((controlMask             , xK_minus  ), sendMessage Mag.MagnifyLess)
+	, ((altMask				, xK_b     	), bringMenu) 	--bring	app	to	workspace
+	, ((controlMask             		, xK_equal  ), sendMessage Mag.MagnifyMore)
+	, ((controlMask             		, xK_minus  ), sendMessage Mag.MagnifyLess)
 	, ((controlMask .|. shiftMask           , xK_equal  ),sendMessage Mag.Toggle)
 	                   
 				-- Quit xmonad
-	 , ((bModMask .|. altMask 				, xK_q      ), io (exitWith ExitSuccess))
+	 , ((bModMask .|. altMask 		, xK_q      ), io (exitWith ExitSuccess))
     --Lock Screen
     , ((bModMask              			, xK_l       ), spawn "dm-tool switch-to-greeter") --requires  lightdm
     -- Push window back into tiling
@@ -185,12 +185,12 @@ bTopics=["I","II","III","Art","www","Media","Projects","Business"]
 
 bmanageHook	= composeAll . concat $ 
 			 [
-			 [isFullscreen						--> doFullFloat			         	   		]	 
+			 [isFullscreen					--> doFullFloat			         	   		]	 
 			,[className 		=? c			--> doShift 		"www" 	| c <-bWeb		]
 			,[className 		=? c			--> doShift 		"Media" | c <- bMedia 	]		
 			,[className 	 	=? c			--> doShift 		"Art" 	| c <- bArt   	]
-			,[className 		=? c			--> doFloat	 			  	| c <- bFloat 	]
-			,[className			=? c			--> doFullFloat		 	  	| c <- bFullFloat ]
+			,[className 		=? c			--> doFloat	 		| c <- bFloat 	]
+			,[className		=? c			--> doFullFloat		 	| c <- bFullFloat ]
 			]
 			where 
 				bFloat		= ["vlc","yakuake","plank","Guake"]
