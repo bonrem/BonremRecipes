@@ -8,6 +8,7 @@ alsa-lib
 alsa-plugins
 alsa-utils
 aom
+arc-gtk-theme
 archlinux-keyring
 argon2
 aspell
@@ -20,6 +21,7 @@ audit
 autoconf
 automake
 avahi
+bamf
 bash
 bdf-unifont
 binutils
@@ -30,6 +32,10 @@ blosc
 bluez
 bluez-libs
 boost-libs
+breeze
+breeze-gtk
+breeze-icons
+bridge-utils
 brotli
 btrfs-progs
 bubblewrap
@@ -59,6 +65,7 @@ diffutils
 dina-font
 dmraid
 dnssec-anchors
+docker
 dosfstools
 double-conversion
 dzen2
@@ -66,6 +73,7 @@ e2fsprogs
 elm-platform-bin
 enchant
 erlang
+etherape
 expat
 fakeroot
 feh
@@ -77,6 +85,7 @@ findutils
 flac
 flex
 fontconfig
+frameworkintegration
 freetype2
 fribidi
 gawk
@@ -105,7 +114,9 @@ gnome-desktop
 gnupg
 gnutls
 go
+gobject-introspection
 gobject-introspection-runtime
+goocanvas
 gpgme
 gpm
 gptfdisk
@@ -316,6 +327,7 @@ haskell-x509-validation
 haskell-yaml
 haskell-zip-archive
 haskell-zlib
+haveged
 hdf5
 hicolor-icon-theme
 hspell
@@ -355,6 +367,7 @@ kconfigwidgets
 kcoreaddons
 kcrash
 kdbusaddons
+kdecoration
 keyutils
 kglobalaccel
 kguiaddons
@@ -368,12 +381,14 @@ kmod
 knewstuff
 knotifications
 knotifyconfig
+kpackage
 kparts
 kpty
 krb5
 kservice
 ktextwidgets
 kwallet
+kwayland
 kwidgetsaddons
 kwindowsystem
 kxmlgui
@@ -415,11 +430,16 @@ libevdev
 libevent
 libexif
 libffi
+libfm
+libfm-extra
+libfm-gtk2
 libfontenc
 libgcrypt
 libgdm
+libgee
 libglvnd
 libgpg-error
+libgtop
 libgudev
 libgusb
 libgweather
@@ -439,6 +459,8 @@ libmm-glib
 libmnl
 libmodplug
 libmpc
+libndp
+libnewt
 libnftnl
 libnghttp2
 libnl
@@ -452,6 +474,7 @@ libogg
 libomxil-bellagio
 libpcap
 libpciaccess
+libpgm
 libpipeline
 libplist
 libpng
@@ -466,6 +489,7 @@ libseccomp
 libsecret
 libsm
 libsndfile
+libsodium
 libsoup
 libsoxr
 libspnav
@@ -473,6 +497,7 @@ libssh
 libssh2
 libsystemd
 libtasn1
+libteam
 libthai
 libtheora
 libtiff
@@ -492,6 +517,7 @@ libvorbis
 libvpx
 libwacom
 libwebp
+libwnck3
 libx11
 libxau
 libxaw
@@ -516,6 +542,7 @@ libxmu
 libxpm
 libxrandr
 libxrender
+libxres
 libxshmfence
 libxslt
 libxss
@@ -537,7 +564,10 @@ lm_sensors
 log4cplus
 logrotate
 lua52
+lux
 lvm2
+lxappearance
+lxmenu-data
 lz4
 lzo
 m4
@@ -546,6 +576,7 @@ man-db
 man-pages
 mdadm
 media-player-info
+menu-cache
 mesa
 mkinitcpio
 mkinitcpio-busybox
@@ -558,6 +589,8 @@ ncurses5-compat-libs
 ndctl
 netctl
 nettle
+networkmanager
+networkmanager-dmenu-git
 nm-connection-editor
 nmap
 noto-fonts
@@ -576,6 +609,7 @@ openresolv
 openshadinglanguage
 openssh
 openssl
+openssl-1.0
 opensubdiv
 openvdb
 opus
@@ -591,11 +625,13 @@ parted
 patch
 patchelf
 pciutils
+pcmanfm
 pcre
 pcre2
 pepper-flash
 perl
 perl-error
+perl-locale-gettext
 perl-mailtools
 perl-timedate
 phonon-qt5
@@ -618,6 +654,7 @@ pulseaudio-bluetooth
 pygobject-devel
 python
 python-appdirs
+python-beaker
 python-cachecontrol
 python-chardet
 python-colorama
@@ -627,6 +664,8 @@ python-gobject
 python-html5lib
 python-idna
 python-lockfile
+python-mako
+python-markupsafe
 python-msgpack
 python-numpy
 python-packaging
@@ -681,6 +720,8 @@ sdl2
 sed
 shadow
 shared-mime-info
+slang
+slim
 snappy
 solid
 sonnet
@@ -761,6 +802,7 @@ webrtc-audio-processing
 wget
 which
 woff2
+wpa_supplicant
 wxgtk-common
 wxgtk2
 x264
@@ -844,6 +886,7 @@ yaml-cpp
 yaourt-git
 yay
 zenity
+zeromq
 zita-alsa-pcmi
 zita-resampler
 zlib
